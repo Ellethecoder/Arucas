@@ -1,6 +1,7 @@
 package me.senseiwells.arucas.throwables;
 
 import me.senseiwells.arucas.values.Value;
+import me.senseiwells.arucas.throwables.ThrowStop;
 
 public abstract class ThrowValue extends Exception {
 	ThrowValue(String message) {
@@ -22,7 +23,7 @@ public abstract class ThrowValue extends Exception {
 	public static class Return extends ThrowValue {
 		public final Value<?> returnValue;
 		public Return(Value<?> returnValue) {
-			super("Cannot return here");
+			throw new ThrowStop();
 			this.returnValue = returnValue;
 		}
 	}
